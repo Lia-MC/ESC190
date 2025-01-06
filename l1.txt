@@ -1,0 +1,63 @@
+// things to review
+
+recursion
+memory model 
+complexity analysis
+
+
+// compiled vs. interpreted language
+
+interpreters are machine code
+python - interpreted - vs code takes in python code and executes it
+eg. exec() from python -> python interpreter in a python interpreter
+compiler - takes in human-code and translates it to machine code (smth that hardware can execute almost directly)
+interpreter and compiler are both programs
+exec speed: machine code > interpret human code
+
+
+// high level vs. low level languages
+
+high level (python) - more abstract - for loops, functions -> could translate it to machine code but not straightforward
+low level - more like machine code
+the more abstractions, the harder to translate into machine compiled
+
+// you could write an interpreter that runs c code
+
+
+// types in c
+
+- int -> integer
+- double -> double precision float (like float in python)
+- char -> character
+- int * -> address of int
+- char * -> address of char
+
+// need a main function in c
+
+// template for main function in c:
+
+include <stdio.h>
+int main() {
+    return 0;
+}
+
+// why return 0? 
+
+- does it by default but the value that main returns if called from outside, it'll return that to the OS.
+- anything that returns a diff value can represent an error code.
+- supposed to return an int but doesnt have to be int if specified otherwise(?)
+
+// printing in c: 
+
+printf("%d/n", n);
+
+// pointers
+
+int *p_a = 0; // address of p_a is 0 (the address in memory table)
+
+// addresses for strings in c
+
+strings in c: 
+
+- chars in memory, has null character (/0) that indicates that string is over
+- eg. char *s = "abc"; // s is address of 'a', s + 1 is address of 'b', etc.
