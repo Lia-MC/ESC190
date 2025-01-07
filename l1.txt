@@ -49,15 +49,42 @@ int main() {
 
 // printing in c: 
 
-printf("%d/n", n);
+printf("%d/n", n); // prints int (decimal)
+
+when you print the string it won't print the null character
+if you specifically print the null character (ie. by specifying s[3]) it will print it
+
+printf("%s\n", s); // prints string
+printf("%c\n", s[2]); // prints char
+
+-> note that printing is substitution
 
 // pointers
 
 int *p_a = 0; // address of p_a is 0 (the address in memory table)
 
-// addresses for strings in c
+//ignore this -> int p_a = &n; // p_a is address of n // is it long??
 
-strings in c: 
+int n = 25;
+p_a = &n; 
+int m = *p_a;
+p_a is address of where n is stored
+m is the value stored at address p_a which is just the value of n
+
+// strings in c: 
 
 - chars in memory, has null character (/0) that indicates that string is over
-- eg. char *s = "abc"; // s is address of 'a', s + 1 is address of 'b', etc.
+- eg. char *s = "abc"; // s is address of 'a', s + 1 is address of 'b', etc. // this is a const char, immutable
+- s is of variable type char *, s is address of first character in s
+
+// literals (in other words, constants)
+
+literals = data that are inputted directly into the code
+ints and doubles = same as python
+symbols in single quotes - char
+strings in double quotes = const char * - what's stored is the address of the first char in the string
+
+// stack versus heap (check python tutor for the visualization)
+
+- stack has boxes of all the variables including the pointers
+- heap has all the values of the stuff stored in the pointer
