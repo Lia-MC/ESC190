@@ -1,0 +1,68 @@
+// Variable Declaration in c
+
+int a = 43;
+long int la = 22039482345L;
+char c = '@';
+char *s = "abs"; // a "string" = address of first character in the sequence 'a', 'b', 's', '\0'
+char* s = "abs"; // same as above
+char *p_c = &c; // pointer of c = address of c // why is this a char???
+
+
+// if char * is a number (it's an address - long int) why not just use an int?
+// 1. efficiency -> telling we're only using variable c as a char, saves memory and is more efficient
+// 2. make things more readable -> helps make it so that you can't just type in an address on your own
+
+// eg. if p_c = 23456;
+// and then *p_c; // this would get you a warning and you can make it run
+
+// you can only do *x if x is an address
+
+// Arrays
+
+int arr[] = {5, 10 ,2}; // can only do {} for initialization
+arr[0] = 3;
+int arr2[10]; // an array of size 10
+
+int main() {
+    int arr[] = {5, 6, 7};
+    printf("%d\n", arr[1]);
+    return 0;
+}
+
+// Pointers
+
+int main() {
+    int a = 42;
+    int *p_a = &a; // p_a is address of a
+
+    char *s = "abc";
+
+    // *p_a -> dereferencing
+    *p_a = 43; // put 43 into the address p_a -> a becomes 43
+
+    return 0;
+}
+
+// Functions
+
+// returnvalue name(typeofparameters parameters)
+int add(int a, int b) {
+    return a + b;
+}
+
+// what happens when you get a pointer in the input of a function?
+
+// if you call the following function in main with set43(&a);, the value at the address will be changed (wait but heap vs. stack?)
+void set43(int *p_a) {
+    *p_a = 43; // go to whatever is the box with the address p_a and put 43 in it
+}
+
+// what happens when you print the pointer of an array?
+int main() {
+    // when used, array identifiers are converted to the address of the first element
+    // when used, arrays are generally converted to the pointer to the first element
+
+    int arr[] = {6, 7, 8};
+    printf("%d\n", *arr); 
+    printf("%d\n", arr[0]); // same output as above // a[0] = *(a + 0)
+}
