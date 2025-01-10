@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int f(int *p_a) {
+    *p_a = 43; // go to cell at the address of p_a, to the cell of that address, assign the value 43
+}
+
+int main() {
+    int a = 42;
+    f(&a);
+
+    // Pointer arithmetic 
+    int arr[] = {6, 7, 8};
+    printf("%p\n", arr + 1);
+    printf("%ld\n", arr); // converts it into decimal
+    printf("%ld\n", arr + 1); // notice for int address increases by 4 whereas if it's char address increases by 1
+}
