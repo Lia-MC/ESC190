@@ -1,0 +1,53 @@
+// exercise 1
+
+void change_a(int *p_a) {
+    // need the address of a to be able to change the value
+    // what is the variable type for "address of a"? int *
+    *p_a = 42;
+}
+
+// exercise 2
+void dont_change_a(int a) {
+    a = 43;
+}
+
+// other examples
+int f(int x) {
+    return x - 1;
+}
+
+int ret43(int c) {
+    c = 40;
+    return 43;
+}
+
+// run exercises
+int main() {
+    int a = 5;
+    change_a(&a);
+    printf("%d\n", a);
+
+    dont_change_a(a);
+    printf("%d\n", a);
+
+    int *p_a = &a;
+    *p_a = 50; // change the value of a to 50
+
+    int b = f(123) // 122 gets copied to b
+    int c = 42;
+    c = ret43(); // c becomes 43
+}
+
+
+
+// arrays examples
+
+void change_arr0(int *p_a) {
+    *p_a = 43; // same as p_a[0]
+}
+
+int main() {
+    int arr[3] = {5, 6, 7};
+    change_arr0(arr); // make arr[0] change
+    change_arr0(&(arr[0])); // same as the line above
+}
