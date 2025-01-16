@@ -1,0 +1,108 @@
+int main () {
+    char s1[] = "abc"; // initialize a block of memory (array) with abc
+    // declares an array and initializies the elements 
+
+    char *s2 = "abc"; // the address where abc lives -> all of it is in memory
+    // s2 stuff is a pointer to the heap
+    // "abc" is not mutable
+
+    const char * // 
+
+    // undefined behaviour
+    char *s1 = "abc"; // not allowed to modify contents of this - implicit conversion to char * 
+    s1[0] = 'x'; // this is illegal -> cant go to s and modify contents there
+
+    const char *s2 = "anc"; / s2 is the address of 'a'. not allowed to modify contents at s2 so it wont even compile if that happenss2[0] = 'z';
+
+    // abort because if you debug anyway youre just running old code
+
+    // trying to change a char * after it's once been defined as a const char * -> undefined
+
+    const char *s2 = "abc";
+    s2 = "hfd"; // allowed
+    s2[0] = 'f'; // not allowed
+
+    char * const str = "hello";
+    str = "world" // error
+    str[0] = ‘H’; // OK
+
+    const char * const str = "hello";
+    str = “world”; //error
+    str[0] = ‘H’; // error
+
+
+    char s[] = “abc”;
+    s[0] = ‘x’; // fine
+    s = … // will not compile
+}
+
+int valid () {
+    char s1[] = "abc"
+}
+
+
+// char* is a mutable pointer to a mutable character/string.
+
+// const char* is a mutable pointer to an immutable character/string. 
+// You cannot change the contents of the location(s) this pointer points to. 
+// Also, compilers are required to give error messages when you try to do so.
+// For the same reason, conversion from const char * to char* is deprecated.
+
+
+// heap = memory table
+
+const int a = 42;
+a = 43; // error
+const char c = 'x';
+c ='y'; // error
+
+// q1 through q10 on pointer drills: https://www.cs.toronto.edu/~guerzhoy/190/pointers/
+
+// Q1. Define an integer variable a and initialize it to 42
+int a = 42;
+// correct!
+
+// Q2. Define a pointer to an integer variable p_a and initialize it to the address of a
+int *p_a = &a;
+// correct!
+
+// Q3. Using p_a and without directly using a, change the value of a to 43
+*p_a = 43; // dereferencing
+// correct!
+
+// Q4. Change the value of the pointer p_a to something else. Make sure that the value of a does not change
+p_a = 132456; // i dont think this is correct
+p_a = 0; // this could work
+int b;
+p_a = &b; // this would work
+
+// Q5. Define a function that takes in a pointer to an integer and changes the integer
+void change_int(int *p_a) {
+    *p_a = 10;
+}
+
+// Q6. Call the function from Q5 and pass in the address of a. Make sure that the value of a changes
+change_int(&a);
+
+// Q7. Call the function named change_int without directly using a, but using p_a instead
+change_int(p_a);
+
+// Q8. Define a variable that would store the address of p_a
+
+// Q9. make p_p_a point to p_a
+
+// Q10. Write a function that takes in a pointer to a pointer to an integer and changes the value of the integer to 46
+
+
+
+prinf("%d %c\n", 87, 87); 
+printf("%p\n", 87);
+printf("%s\n", 87); -> would crash, needs to cast, or change 87 to a valid address
+int x = 123;
+printf("%ld\n", &x);
+
+d = decimal
+c = char
+p = pointer (aka address)
+s = string
+ld = long decimal

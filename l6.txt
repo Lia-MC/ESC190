@@ -1,0 +1,16 @@
+const int a = 5;
+int a = 6;
+
+char *s = "abc";
+s = "def";
+
+const char = *s1 = "abc";
+s1 = "def";
+s1[0] = 'x';
+
+const char * const s2 = "abc";
+s2 = "def";
+
+char * const s3 = "abc";
+s3 = "def";
+s3[0] = 'x'; // fine
