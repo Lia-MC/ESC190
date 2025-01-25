@@ -1,0 +1,15 @@
+// pointers of pointers exist (address of address of something)
+
+gcc -----.c -o myexec.exe
+./a.out
+executable is myexec
+./crash.exe
+
+#include "student.h"
+
+#define PI 3.14
+// this subs 3.14 anytime PI is written
+
+add all files to json to debug multiple files
+
+// jan 23 lec is watch worthy

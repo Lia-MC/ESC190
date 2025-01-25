@@ -1,0 +1,70 @@
+// typedef
+
+unsigned long int -> use:
+typedef unsigned long int sz_t;
+sz_t = sz_of_t = 15;
+
+struct student {
+    // fields:
+    char name[200];
+    char number[11];
+    double GPA;
+}
+
+typedef struct student {
+    // fields:
+    char name[200];
+    char number[11];
+    double GPA;
+} student;
+
+int main() {
+    // access fields of a struct using:
+    // why is "1234567890" declared as a char and not an int -> int size limit
+    student s1 = {"John Doe", "1243567890", 3.3}; 
+    printf("%s %f\n", s1.name, s1.GPA);
+    student *p_s1 = &s1;
+    printf("%s %f\n", (*p_s1).name, (*p_s1).GPA);
+}
+
+// aka: typedef <old type> <new type name>;
+
+// pointers to structs
+a->b is the same as (*a).b
+eg. print("%s %f\n", p_s1->name, p_s1->GPA);
+
+// strlen
+int my_strlen(char *s) {
+    int cur_i = 0;
+    while (s[cur_i] != '\0') {
+        cur_i++;
+    }
+
+    // another way:
+    for (cur_i = 0; s[cur_i] != '\0'; cur_i++);
+
+    return cur_i;
+}
+
+
+// recursive way:
+// base case: if s[0] is '\0', can return 0
+// recursive step: my_strlen(s) = 1 + my_strlen(s + 1);
+// in other words, advance the address by one, and go until there's nothing left
+
+int my_strlen_rec(char *s) {
+    if(s[0] == '\0') {
+        return 0;
+    } else {
+        return 1 + my_strlen_rec(s + 1);
+    }
+}
+
+int main() {
+    char s[] = "abc";
+    printf("%d\n", my_strlen(s));
+}
+
+// malloc 
+
+// sizeof

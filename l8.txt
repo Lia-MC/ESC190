@@ -1,0 +1,46 @@
+sizeof(int) // usually 4 bytes
+
+int arr[] = {1, 2, 3}
+sizeof(arr)/sizeoff(arr[0]) // length of array
+if arr is passed to a function, it's converted to pointer (address of first element)
+
+void sz(int *a) {
+    sizeof(a);
+}
+
+int main() {
+    int a[] = {1, 2, 3};
+    sz(a);
+}
+
+typedef struct student {
+    char name[200];
+    double GPA;
+} student;
+
+typedef struct student1 {
+    char name[16];
+    double GPA;
+} student1;
+
+int main() {
+    printf("%d\n%d\n", sizeof(student), sizeof(student1))
+    student1 = 
+}
+
+malloc 
+int *block_int = (int *)malloc(sizeof(int) * 150) // allocate space for 150 integers
+int *my_block = (int *)malloc(5 * sizeof(int));
+
+// strings
+
+char s1[] = "hi";
+char s1[] = {'h', 'i', '\0'};
+
+char s3[5];
+
+strcpy(s3, s1);
+
+char *s2 = 0; 
+
+s2 = s1; // s2 and s1 are aliases
