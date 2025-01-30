@@ -1,0 +1,90 @@
+// realloc -> resize blocks of memory
+char *str = (char *)malloc(100 * sizeof(char));
+str = (char *)realloc(str, 200 * sizeof(char));
+// realloc returns a new address
+// if necessary it'll copy stuff over, 
+// if not it'll just return the prev address
+
+// error checking!! 
+
+char *block = malloc(1000000000000);
+if (block == NULL) {
+    exit(1); // terminates program, 1 sent to operating system
+    // this happens when you're out of memory
+}
+// if you dont error check, it might crash randomly when 
+// you try to access a block from that block of memory
+
+// creating a string that we can use
+#include <stdio.h>
+#include <stdlib.h>
+void create_str(char **p_str, int sz) { // recall type of &(*str) is char**
+    *p_str = (char *)malloc(sz * sizeof(char)); // change str
+    // error checking
+    if (*p_str == NULL) { // is str in main equal to null?
+        // out of memory
+        exit(1);
+    }
+}
+
+int main() {
+    char *str; // a pointer
+    create_str(&str, 200);
+    // need to send address to modify value of variable
+    // if i wanted to change str[0], i could just pass str
+    // but here, i want str to be nothing and it to become a valid address
+    strcpy(str, "rhea!!");
+
+    printf("Name: %s\n", str);
+    return 0;
+}
+
+// stackoverflow -> if not even enough space for null
+// NULL has a type (void *) but not an address
+
+char *strcat(char *str1, const char *str2) {
+    // const char *str2 because we shouldnt be modifying it
+    int i = 0;
+    while(str1[i] != NULL) {
+        i++;
+    }
+    // str[i] is null so we can start writing the contents of str2
+    int j = 0;
+    while(str2[j] != NULL) {
+        str1[i] = str[j];
+        j++;
+        i++;
+    }
+    str1[i] = NULL;
+
+    return str1;
+}
+
+int b = a++; // b is old val of a, a is incremented
+int c = ++b; // incremented value assigned to c and b is incremented
+
+char *strcpy(char *dest, const char *src) {
+    while(*src != NULL) {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = NULL;
+
+    // other way
+    while(*src) {
+        *dest++ = *src++;
+    }
+
+    *dest = NULL;
+
+    // other way
+
+    int i = 0;
+    while(src[i] != NULL) {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = NULL;
+    return dest;
+}

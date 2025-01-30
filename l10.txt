@@ -1,0 +1,86 @@
+// title it new_struct_student.c
+
+typedef struct student1 {
+    char *name;
+    double gpa;
+} student1;
+
+typedef struct student2 {
+    char name(200);
+    double gpa;
+} student2;
+
+student1 make_student1(char *name, double gpa) {
+    student1 s1;
+    s1.name = name;
+    s1.gpa = gpa;
+
+    return s1;
+}
+
+student1 make_student1_new(char *name, double gpa) {
+    student1 s1;
+    s1.name = (char *)malloc(strlen(name) + 1);
+    strcpy (s1.name, name);
+    s1.gpa = gpa;
+
+    return s1;
+}
+
+student2 make_student2(char *name, double gpa) {
+    // s2.name is an array: already allocated
+    // cannot reassign to arrays (so cannot go s2.name = ...)
+    // can write to arrays
+    student s2;
+    strcpy(s2.name, name);
+    // strcpy is equivalent to:
+    // for(int i = 0; i < strlen(s2.name)+1; i++) {
+    //     s2.name[i] = name[i];
+    // }
+    s2.gpa = gpa;
+}
+
+int main() {
+    student1 s1 = make_student1("Mike", 3.7);
+    // cannot do:
+    s1.name[0] = 'm'; // because inputted Mike as a string literal
+
+    student1 s1 = make_student1_new("Mike", 3.7);
+    s1.name[0] = 'm'; // fine
+
+    printf("Name: %s\n", s1.name);
+}
+
+
+
+// block of structs file
+
+student2* make_student2_block(int n) {
+    student2 *students = (student *)malloc(sizeof(student2) *n);
+    for(int i = 0; i < n; i++) {
+        students[i].name = (char *)malloc(2000 * sizeof(char));
+    }
+
+    return students;
+}
+
+void destroy_students(student2 * students) {
+    for (int i = 0; i < n; i++) {
+        free(students[i].name);
+    }
+
+    free(students);
+}
+
+int main() {
+    // can have an array of students:
+    student students[200];
+
+    student2 students[200];
+    // strcpy(student2s[5].name, "Bob") // cant do directly because
+    // student2s[5].name is not a valid address
+
+    // can do:
+    student2s[5].name = (char *)malloc(200 * sizeof(char));
+    strcpy(student2s[5].name, "Bob"); // fine
+} cutie patootie's code
