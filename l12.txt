@@ -1,0 +1,106 @@
+int main() {
+    char *str = "abc"; // str is address of 'a' in string "abc"
+    // str + 1 is address of 'b'
+    str++; // make str be equal to str+1, same as str += 1
+    printf("%s\n", str); // output: bc
+    // (this is because str is address of 'b' and we print up until we encounter '\0')
+
+    printf("%c\n", *str) // output: b
+    // go to address of str and print character stored there
+
+    printf("%c\n", *str++); // output: b 
+    // take the current value (address of b) and use it, and then increment str
+    // now str is changed to the the address of c
+
+    printf("% \n", *str++); // output: c
+}
+
+char *my_strcpy2(char *dest, const char *src) {
+    // keep doing: 
+    // dest[0] = src[0]
+    // increment address dest and src each by 1
+    // repeat
+
+    // my way:
+    int i = 0;
+    while(*dest[i] != NULL) {
+        dest[i] = src[i];
+        i++;
+    }
+
+    // guerzhoy way - lowkey dont really understand why this works
+    char *dest_start = dest;
+    while(*src != '\0') { // can also do while(*src)
+        *dest++ = *src++;
+        printf("dest: %ld, src: %ld\n", dest, src); // printing addresses
+    }
+    *dest = *src;
+    return dest_start;
+}
+
+
+// dest: abcde
+// src: xyz
+// we want to copy xyz to end of dest
+// eventually dest becomes address of null after incremented
+// copy src to the null character in dest and beyond
+char *my_strcat(char *dest, const char *src) {
+    while(*dest) {
+        dest++;
+    }
+    my_strcpy2(dest, src);
+}
+
+int main() {
+    char name1[] = "tester";
+    char name2[1000];
+    my_strcpy2(name2, name1);
+    printf("result: %s\n", name2);
+}
+
+// do all 50 pointer exercises
+
+students.c
+
+struct student1{
+    char name[200];
+    double gpa;
+};
+
+or 
+
+struct student1{
+    char *name; // this contains an address is initially nothing
+    double gpa;
+} 
+
+void create_student1(struct student1 **p_p_s1) {
+    *ps_1 = (struct student1*) malloc(sizeof(struct student1));
+}
+
+void create_student1v2(struct student1 **p_p_s1, const char *name, double gpa) {
+    *p_p_s1 = (struct student1*) malloc(sizeof(struct student1)); // THIS *p_p_s1
+    strcpy((*p_p_s1)->name, name);
+}
+
+// incomplete: watch jan 30th lecture:
+void create_student2v1(struct student2 **p_p_s1, const char *name, double gpa) {
+    *p_p_s1 = (struct student1*) malloc(sizeof(struct student1)); // THIS *p_p_s1
+    strcpy((*p_p_s1)->name, name);
+}
+
+void create_student2_block(struct student2 **p_p_s1, int n_students) {
+    *p_p_s1 = (struct student2*)malloc(sizeof(struct student2) * n_students);
+    for(int i = 0; i < n_students; i++) {
+        (*p_p_s1)[i].name = (char *)malloc(sizeof(char) * 200);
+    }
+}
+
+// *p_p_s1 from above is the same as *p_s1 from below
+
+int main() {
+    struct student1 *p_s1; // THIS *p_s1
+    create_student1(&p_s1);
+    create_student1v2(&p_s1, "Mike", 3.9);
+    arrow only if pointer dot is not pointer
+}
