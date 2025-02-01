@@ -29,7 +29,7 @@ int linear_search(int *a, int sz, int elem) {
 // it should become {8, 7, 6, 5}
 
 void reverse_arr(int *arr, int sz) {
-    int *new = (int *)malloc(sz * sizeof(int));// size of??
+    int *new = (int *)malloc(sz * sizeof(int));
     int z = 0;
     for(int j = sz - 1; j >= 0; j--) {
         new[j] = *(arr + z);
