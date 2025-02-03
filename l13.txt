@@ -1,0 +1,14 @@
+// valgrind
+// a tool for checking memory leaks / invalid memory accesses
+// can access through ecf, gradescope, wsl
+
+int main() {
+    int *block = (int *)malloc(1000 * sizeof(int));
+    // forget to free
+}
+
+
+list all files:
+ls -lt
+./use_valgrind
+valgrind ./use_valgrind
