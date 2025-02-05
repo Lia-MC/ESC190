@@ -12,3 +12,7 @@ list all files:
 ls -lt
 ./use_valgrind
 valgrind ./use_valgrind
+
+actually:
+./[file name without the .___]
+valgrind ./[file name without the .___]
