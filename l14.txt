@@ -1,0 +1,25 @@
+// abstract data type
+// example: list
+
+// implementing the list adt
+// get, insert, remove
+
+// considerations: 
+// 1. speed/complexity
+// 2. space
+// 3. easy to use/implement
+
+[10, 12, 45, 12, 10, 125] // store in a block of memory
+// complexity of remove element at i -> O(n) where n is the size of the list 
+// because worst case remove element at i=0 means we need to move all elements one space to the left aka n-1 elems to move
+
+space requirement for block of memory implementation for list of size n
+n * sizeof(int) so O(n)
+
+complexity of insert at i
+O(n-i) // argument: need to move n-i elements to the right
+O(n) // might need to move the entire block
+
+complexity of get value at i
+O(1)
+// need to compute location of elem at index i and do this using pointer + sizeof(int)*i so one addition 1 multiplication
