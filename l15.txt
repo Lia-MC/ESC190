@@ -1,0 +1,9 @@
+// midterm info:
+pointer exercises, lab 1 level, qsort / sorting algorithm, strcmp strlen strcpy strcat, 
+recursive, review project 1, file reading, typedef structs and blocks, pointer exercises (q 40-45 ish)
+
+// proj 1 help -> 2024 midterm
+
+// linked lists
+
+see linkedlists folder
