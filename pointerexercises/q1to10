@@ -1,0 +1,55 @@
+// Q1. Define an integer variable a and initialize it to 42
+
+int a = 42;
+
+// Q2. Define a pointer to an integer variable p_a and initialize it to the address of a
+
+int *p_a = &a;
+
+// Q3. Using p_a and without directly using a, change the value of a to 43
+
+*p_a = 43;
+
+// Q4. Change the value of the pointer p_a to something else. Make sure that the value of a does not change
+
+p_a = 4034542; // note this causes a memory leak, value of a isn't stored anywhere
+// OR
+int b = 44;
+p_a = &b; // this prevents the value of a from being changed, a is still 43
+
+// Q5. Define a function that takes in a pointer to an integer and changes the integer
+
+void change_int(int *p_b) {
+    *p_b = 3;
+}
+
+// Q6. Call the function from Q5 and pass in the address of a. Make sure that the value of a changes
+
+int main() {
+    change_int(&a);
+    printf("%d\n", a); 
+}
+
+// Q7. Call the function named change_int without directly using a, but using p_a instead
+
+int main2() {
+    change_int(p_a);
+    printf("%d\n", a); 
+}
+
+// Q8. Define a variable that would store the address of p_a
+
+long int address_of_a = &p_a; // might not be wrong but not the "correct answer"
+int **p_p_a = &p_a; // this is right, because p_a is of type int *
+
+// Q9. make p_p_a point to p_a
+
+p_p_a->p_a; // wrong
+p_p_a = &p_a; // "point to" means "set it to address of"
+
+// Q10. Write a function that takes in a pointer to a pointer to an integer and changes the value of the integer to 46
+
+void change_to_46(int **p_p_x) {
+    *(*p_p_x) = 46; // i think this is fine
+    **p_p_x = 46; // but this works too, and actually this works better
+}
