@@ -44,7 +44,7 @@ int **p_p_a = &p_a; // this is right, because p_a is of type int *
 
 // Q9. make p_p_a point to p_a
 
-p_p_a->p_a; // wrong
+// p_p_a->p_a; // wrong
 p_p_a = &p_a; // "point to" means "set it to address of"
 
 // Q10. Write a function that takes in a pointer to a pointer to an integer and changes the value of the integer to 46
@@ -52,4 +52,121 @@ p_p_a = &p_a; // "point to" means "set it to address of"
 void change_to_46(int **p_p_x) {
     *(*p_p_x) = 46; // i think this is fine
     **p_p_x = 46; // but this works too, and actually this works better
+}
+
+// Q11. Write a function that takes in a pointer to a pointer to an integer and 
+// changes the value of the pointer to a new address where an integer can be stored. (You will need to use malloc)
+
+void changeintaddress(int **p_p_int) {
+    int *newmem = (int *)malloc(sizeof(int));
+    *p_p_int = &newmem;
+    // OR BETTER:
+    *p_p_int = malloc(sizeof(int));
+}
+
+// Q12. Call the function from Q10 in order to change the value of a to 46. Do this using p_p_a, and using p_a.
+
+int main3() {
+    int c = 43;
+    int *p_c = &c;
+    int **p_p_c = &p_c;
+    change_to_46(p_p_c);
+    // could also do:
+    change_to_46(&p_c);
+}
+
+// Q13. Call the function from Q11 in order to change the value of p_a to point to a new address. Don't use p_p_a.
+
+int main4() {
+    int d = 23;
+    int *p_d = &d;
+    changeintaddress(&p_d);
+}
+
+// Q14. Call the function from Q11 in order to change the value of p_a to point to a new address. Use p_p_a.
+
+int main5() {
+    int e = 23;
+    int *p_e = &e;
+    int **p_p_e = &p_e;
+    changeintaddress(p_p_e);
+}
+
+// Q15. Declare an array of integers and initialize it to {5, 6, 7}
+
+int main6() {
+    // wrong initial guess:
+    // int *[] = {5, 6, 7}; 
+    // star wasn't needed, needed the array's name
+
+    // proper way:
+    int arr[3] = {5, 6, 7}; 
+    // or 
+    int arr2[] = {5, 6, 7};
+}
+
+// Q16. Write a function that takes in a pointer to the first element of an array of integers 
+// and modifies the element at index 2 to 8
+
+void modifyelem(int *first) {
+    *(first + 2) = 8; // did this on my own
+    // or:
+    first[2] = 8; // answer key inspired
+}
+
+// Q17. Call the function from Q16 in order to change the value of an element of the array from Q15
+
+int main7() {
+    int arr3[] = {5, 6, 7};
+
+    // my answer
+    modifyelem(&arr3); 
+
+    // better answer
+    modifyelem(arr3); 
+    // if you wanna modify elem in array, just pass in the array name,
+    // the address will figure itself out
+    
+    // explanation
+    // Note that if arr3 is an array (not a pointer returned by malloc), &arr3 would also work here, 
+    // and arr3 and &arr3 are the same thing. But if arr3 is a pointer, then arr3 and &arr3 are different)
+
+}
+
+// Q18. Create a malloc-allocated block of memory that can store 3 integers. Store the address in the variable p_block. 
+// Then use modifyelem to change the value at index 2
+
+int main8() {
+    int *p_block = malloc(sizeof(int) * 3);
+    modifyelem(p_block);
+}
+
+// Q19. Use change_int from Q5 to change the value of the integer stored in the block of memory from Q18
+
+// void change_int(int *p_b) {
+//     *p_b = 3;
+// }
+
+int main9() {
+    // my solution
+    int *p_blockkk = malloc(sizeof(int) * 3);
+    // modifyelem(p_blockkk);
+    change_int(*(p_blockkk + 2));
+
+    // answer key
+    change_int(p_blockkk);
+}
+
+// Q20. Use change_int_ptr from Q11 to change the value of p_block to point to a new address
+
+// void changeintaddress(int **p_p_int) {
+//     int *newmem = (int *)malloc(sizeof(int));
+//     *p_p_int = &newmem;
+//     // OR BETTER:
+//     *p_p_int = malloc(sizeof(int));
+// }
+
+int main10() {
+    int *p_block2 = malloc(sizeof(int) * 3);
+    changeintaddress(&p_block2);
 }
