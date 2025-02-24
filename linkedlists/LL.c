@@ -33,3 +33,46 @@ void create_LL_from_data(LL **p_LL, int *data_arr, int size) {
 }
 // call using create_LL_from_data(&LL, data_arr, size)
 
+void get_i(LL *p_LL, int i) {
+    if (p_LL->sz >= i) {
+        exit(1);
+    }
+    int j = 0;
+    node *cur = p_LL->head;
+    while (j < i) {
+        cur = cur->next;
+    }
+    // after ive run the while loop, cur is the nth node that contains the ith elem
+    return cur->data;
+}
+
+void append(LL *p_LL, int data) {
+    // my sol:
+    // int j = 0;
+    node *cur = p_LL->head;
+    // while (j != '\0') {
+    //     cur = cur->next;
+    // }
+
+    // his sol:
+    if (p_LL->head == NULL) {
+        node *newnode;
+        create_node(&newnode, data);
+        p_LL->head= newnode;
+        return;
+    }
+    while (cur->next != NULL) {
+        cur = cur->next;
+    }
+    node *newnode;
+    create_node(&newnode, data);
+    cur->next = newnode;
+    p_LL->sz += 1;
+}
+
+int main() {
+    int data_ints[] = {5, 10, 23, 10, 24};
+    LL *p_LL; // a random address 
+    create_LL_from_data(&p_LL, data_ints, sizeof(data_ints) / sizeof(int)); // if it's an array defined IN MAIN i can do this if not i cant
+
+}
