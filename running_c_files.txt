@@ -1,0 +1,2 @@
+gcc linkedlist.c test_linkedlist.c -o lab6test
+./lab6test

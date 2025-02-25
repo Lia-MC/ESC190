@@ -19,3 +19,7 @@ valgrind ./[file name without the .___]
 
 also note, to use valgrind, u need to gcc first to create exe
 then u can valgrind the .exe file
+
+FINAL:
+gcc linkedlist.c test_linkedlist.c -o lab6test
+./lab6test
