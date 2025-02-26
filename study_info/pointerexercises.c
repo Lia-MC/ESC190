@@ -449,31 +449,95 @@ strcpy(((*p_p_s) + 2)->name, "Jennifer"); // the pointer is dereferenced once to
 // or 
 strcpy((*p_p_s)[2].name, "Jennifer"); // go to the second object, then get the name using . since its an object
 
-// Q39. In the name of the second student in the block pointed to by p_p_s, change the first letter to 'j'. Propose four valid to do that with one line that don't involve calling a function
+// Q39. In the name of the second student in the block pointed to by p_p_s, change the first letter to 'j'. 
+// Propose four valid ways to do that with one line that don't involve calling a function
 
-//
+// my solutions:
+(((*p_p_s)[2]).name)[0] = 'j';
+(&((*p_p_s)[2]))->name[0] = 'j';
 
-// Q40. Write a function that takes in a pointer to the first element of a block of addresses of students, and changes the name of the student at index 2 to "Jenny"
+// solutions:
+((*(p_p_s))[1]).name[0] = 'j'; // dereferences to get pointer to the first elem in block, access student at the index (object)
+// get the name field of the object, and then get the first char in the name
+(*p_p_s + 1)->name[0] = 'j'; // dereference block to get address of first elem of block and add one to get addy of second elem, 
+// then using ->, dereference address and get name property at once and get first char in name
+(*(*p_p_s + 1)).name[0] = 'j'; // dereference the address of the block to get the address of first elem, 
+// then add 1 to get addy of second elem in the block, then dereference to get the object at that addy, and get the name of object
+// using dot, then get the first char in name
+p_p_s[0][1].name[0] = 'j'; // dereference using [0] to get the block object, and then get the first student object and 
+// get its name property and get the first index of it
 
-//
+// Q40. Write a function that takes in a pointer to the first element of a block of addresses of students, 
+// and changes the name of the student at index 2 to "Jenny"
+
+void change2tojenny(student **p_block_addr_s) {
+    ((*p_block_addr_s)[2]).name = "Jenny"; // WRONG // update i think this is equivalent
+    strcpy((*p_block_addr_s) + 2, "Jenny"); // WRONG
+    strcpy(p_p_s[2]->name, "Jenny");
+    // just do strcpy for arrays of char
+} // ask copilot if equivalent
 
 // Q41. Create a pointer to a block of 10 pointers to students, and store it in the variable p_block_addr_s
 
-// 
+student *p_block_ten = (student *) malloc(10 * sizeof(student));
+p_block_ten_add = &p_block_ten;
+
+// or per solution:
+student **p_block_addr_s = malloc(10 * sizeof(student *)); // this does it all in one line
 
 // Q42. Call the function from Q40 in order to change the name of the student at index 2. Use p_block_addr_s
 
-//
+change2tojenny(p_block_addr_s); // not change2tojenny(&p_block_addr_s); because its already the block address' address
 
-// Q43. Write a function that takes in the first address of a student in a block of addresses of students, and changes the name of the student at index 2 to "Jenny"
+// Q43. Write a function that takes in the first address of a student in a block of addresses of students, 
+// and changes the name of the student at index 2 to "Jenny"
 
-//
+void index2tojenny(student *first) {
+    strcpy((*(first + 2)).name, "Jenny");
+}
+
+// answer:
+// void change_name3(student **p_block_addr_s)
+//         {
+//             strcpy(p_block_addr_s[2]->name, "Jenny");  
+//         }
 
 // Q44. Call the function from Q43 in order to change the name of the student at index 2. Use p_block_addr_s
 
-//
+change_name3(p_block_addr_s);
 
 
 // ones to redo
 
-// 36, 38, 
+// 36, 38
+
+// Q36. Call the function from Q27 in order to change the name of the student at index 2 of the block of memory from Q33. 
+// Use p_block_s
+
+// where: Q27. Create a function that takes in a pointer to a student and changes the name to "Jenny"
+void change_to_jenny(student *p_s) {
+    strcpy(p_s->name, "Jenny"); // YAY!
+}
+
+// and where Q33. Create a malloc-allocated block of memory that can store 5 students. Store the address in the variable p_block_s
+void storesfivestudents() {
+    typedef struct student {
+        char name[1000];
+        int age;
+    };
+    student *p_block_s = (student *)malloc(sizeof(student) * 5); 
+}
+
+int main15() {
+    student *block_s = (student *)malloc(sizeof(student) * 5);
+    student **p_block_s = &block_s;
+
+    
+}
+
+// Q38. Without calling any function except strcpy, and using only p_p_s, change the name of the student at index 2 to "Jennifer"
+
+strcpy((p_p_s[2]).name, "Jennifer"); // close but i need to dereference first to get address of student at first index and then go on
+strcpy(((*p_p_s) + 2)->name, "Jennifer"); 
+// or 
+strcpy((*p_p_s)[2].name, "Jennifer");
