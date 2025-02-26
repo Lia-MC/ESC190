@@ -13,7 +13,7 @@ typedef struct LL {
 // LL will contain the head pointer: address of the first node in the linked list
 // Each node has data as well as the address of the next node
 
-void create_LL_from_data(LL **p_LL int *data_arr, int size);
+void create_LL_from_data(LL **p_LL, int *data_arr, int size);
 // how we use create_LL_from_data()
 // int main() {
 //     LL *myLL;

@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "q1to10": "cpp"
+        "q1to10": "cpp",
+        "typeinfo": "c",
+        "stdlib.h": "c"
     }
 }

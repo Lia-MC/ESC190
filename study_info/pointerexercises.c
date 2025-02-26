@@ -331,3 +331,149 @@ int main12() {
     student newstu = {"lia", 39};
     change_to_20(&newstu);
 }
+
+// Q31. Create an array of 5 student objects
+
+void create_arr_5_stus() {
+    typedef struct student {
+        char name[1000];
+        int age;
+    };
+
+    student fivestudents[5]; // identifier name[#ofelems]
+}
+
+// Q32. Use the functions from Q27 and Q28 on the element at index 2 of the array
+
+void change_vals() {
+    typedef struct students {
+        char name[1000];
+        int age;
+    };
+    student fivestudents[5];
+
+    // my ways:
+    change_to_jenny(fivestudents[2]); // to do it properly, send in the address of this (address of elem at index 2)
+    change_to_20(fivestudents[2]); // to do it properly, send in the address of this
+
+    // solutions ways:
+    change_to_jenny(&(fivestudents[2])); 
+    // or 
+    change_to_jenny(fivestudents + 2); // this works because fivestudents is the address of the elem at index 0
+
+    change_to_20(fivestudents + 2); 
+    // or 
+    change_to_20(&(fivestudents[2]));
+}
+
+// Q33. Create a malloc-allocated block of memory that can store 5 students. Store the address in the variable p_block_s
+
+void storesfivestudents() {
+    typedef struct student {
+        char name[1000];
+        int age;
+    };
+    student *p_block_s = (student *)malloc(sizeof(student) * 5); 
+    // i don't need to cast, it's the same type
+    // pointer to void returned by malloc is automagically converted to the correct type
+
+    // when do you cast a malloc?
+    // only when you want the right-hand side and the left-hand side to be the same type explicitly
+}
+
+// Q34. Make a function that takes in a pointer to an address of student, 
+// and sets that pointer to point to a new address where a student can be stored
+
+// my solution is better than the website's
+void newaddy(student **addy) {
+    *addy = (student *)malloc(sizeof(student));
+}
+
+// solution:
+// void create_student(student **p_p_s)
+//         {
+//             *p_p_s = malloc(sizeof(student));
+//         }
+
+// Q35. Call the function from Q34 in order to change the value of p_block_s to point to a new address
+
+int main13() {
+    typdef struct student {
+        char name[12];
+        int age;
+    } student;
+    student *p_block_s = (student *)malloc(sizeof(student) * 5);
+    newaddy(&p_block_s); // yes this
+}
+
+// Q36. Call the function from Q27 in order to change the name of the student at index 2 of the 
+// block of memory from Q33. Use p_block_s
+
+// where: Q27. Create a function that takes in a pointer to a student and changes the name to "Jenny"
+void change_to_jenny(student *p_s) {
+    strcpy(p_s->name, "Jenny"); // YAY!
+}
+
+// and where Q33. Create a malloc-allocated block of memory that can store 5 students. Store the address in the variable p_block_s
+void storesfivestudents() {
+    typedef struct student {
+        char name[1000];
+        int age;
+    };
+    student *p_block_s = (student *)malloc(sizeof(student) * 5); 
+}
+
+int main14() {
+    typedef struct student {
+        char name[1000];
+        int age;
+    };
+    student *p_block_s = (student *)malloc(sizeof(student) * 5);
+    change_to_jenny(p_block_s[2]); // WRONG
+    change_name(p_block_s + 2); // i needed to add 2 to the pointer itself
+    // or 
+    change_name(&(p_block_s[2])); // i needed to get the address of the 2nd index student because arr[ind] dereferences (finds the OBJECT)
+}
+
+// Q37. Create a variable p_p_s to store the address of p_block_s
+
+student **p_p_s = &p_block_s; // perfect
+
+// Q38. Without calling any function except strcpy, and using only p_p_s, change the name of the student at index 2 to "Jennifer"
+
+strcpy(&(*p_p_s[2]), "Jennifer"); // WRONG because does not point to name property
+
+// solution says:
+strcpy(((*p_p_s) + 2)->name, "Jennifer"); // the pointer is dereferenced once to get index 0 addy, then add 2 for index 2
+                                          // since it's a pointer, we can get the name of it using -> because it's not an object
+// or 
+strcpy((*p_p_s)[2].name, "Jennifer"); // go to the second object, then get the name using . since its an object
+
+// Q39. In the name of the second student in the block pointed to by p_p_s, change the first letter to 'j'. Propose four valid to do that with one line that don't involve calling a function
+
+//
+
+// Q40. Write a function that takes in a pointer to the first element of a block of addresses of students, and changes the name of the student at index 2 to "Jenny"
+
+//
+
+// Q41. Create a pointer to a block of 10 pointers to students, and store it in the variable p_block_addr_s
+
+// 
+
+// Q42. Call the function from Q40 in order to change the name of the student at index 2. Use p_block_addr_s
+
+//
+
+// Q43. Write a function that takes in the first address of a student in a block of addresses of students, and changes the name of the student at index 2 to "Jenny"
+
+//
+
+// Q44. Call the function from Q43 in order to change the name of the student at index 2. Use p_block_addr_s
+
+//
+
+
+// ones to redo
+
+// 36, 38, 

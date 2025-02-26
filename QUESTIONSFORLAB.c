@@ -25,3 +25,21 @@ void change_age(person *p, int a){
     p->age = a; // this are
     // the exact same
 }
+
+person p;
+person *personsaddres = &p;
+int i;
+p.name = 
+p.age = 
+person* p = (person*) malloc(sizeof(person));
+
+
+
+person p;
+p.name = 
+p.age = 
+
+int i = 0;
+
+person* p = (person*) malloc(sizeof(person));
+int* i_ptr = (int*)malloc
