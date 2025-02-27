@@ -13,14 +13,15 @@ dont do this: int *p_a = 0; because addresses CANNOT be set to 0
 // finish the damn pointer exercises
 // use blocks of structs
 // insertion sort (lab 1)
+// make a qsort
 // do proj 1 / use qsort
+// question 6 (lab 1) // looking at my own solution is probably enough
 // binary search lab 2 q 4
 // make atoi lab 2 q 5
 // review linked lists / use linked lists (namely creating and initializing + append)
 // do past midterms (2024, 2023)
 // understand realloc
 // do the bubble sort exercise by quilin
-// question 6 (lab 1)
 
 // qsort:
 qsort(array_to_be_sorted, #_elements_in_array, sizeof(type of data thats stored in array), comp)
