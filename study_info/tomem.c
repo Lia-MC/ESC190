@@ -2,6 +2,11 @@
 int comp(const void *a, const void *b) {
     return (*(int *)a - *(int *)b);
 }
+int comp(const void *a, const void *b) {
+    term *term_a = (term *)a;
+    term *term_b = (term *)b;
+    return strcmp(term_a->term, term_b->term);
+}
 // Less than zero (<0): If the first argument should be placed before the second argument.
 // Zero (0): If both arguments are equal.
 // Greater than zero (>0): If the first argument should be placed after the second argument.

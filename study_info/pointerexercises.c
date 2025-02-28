@@ -430,7 +430,7 @@ int main14() {
     };
     student *p_block_s = (student *)malloc(sizeof(student) * 5);
     change_to_jenny(p_block_s[2]); // WRONG
-    change_name(p_block_s + 2); // i needed to add 2 to the pointer itself
+    change_name(p_block_s + 2); // i needed to add 2 to the pointer itself, pblocks is addy of s1 
     // or 
     change_name(&(p_block_s[2])); // i needed to get the address of the 2nd index student because arr[ind] dereferences (finds the OBJECT)
 }
@@ -532,7 +532,7 @@ int main15() {
     student *block_s = (student *)malloc(sizeof(student) * 5);
     student **p_block_s = &block_s;
 
-    
+
 }
 
 // Q38. Without calling any function except strcpy, and using only p_p_s, change the name of the student at index 2 to "Jennifer"
