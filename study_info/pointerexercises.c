@@ -446,8 +446,7 @@ strcpy(&(*p_p_s[2]), "Jennifer"); // WRONG because does not point to name proper
 // solution says:
 strcpy(((*p_p_s) + 2)->name, "Jennifer"); // the pointer is dereferenced once to get index 0 addy, then add 2 for index 2
                                           // since it's a pointer, we can get the name of it using -> because it's not an object
-// or 
-strcpy((*p_p_s)[2].name, "Jennifer"); // go to the second object, then get the name using . since its an object
+// or strcpy((*p_p_s)[2].name, "Jennifer"); // go to the second object, then get the name using . since its an object
 
 // Q39. In the name of the second student in the block pointed to by p_p_s, change the first letter to 'j'. 
 // Propose four valid ways to do that with one line that don't involve calling a function
