@@ -38,7 +38,7 @@ else:
 
 for i in range(N-2, -1, -1):
     cur_min = 10000
-    cur_min_col = -1
+    cur_min_col = -1 ## Cant just do local min because then were assuming a set colour for the beginning which might not work
     for col in [0, 1, 2]:
         if col == cols[i+1]:
             continue
@@ -47,7 +47,7 @@ for i in range(N-2, -1, -1):
             cur_min_col = col
     cols[i] = cur_min_col
 
-
+# RECURSIVE VERSION
 def paint_house_cost(houses, col, i):
     '''Return the cost of painting houses
     0, 1, 2, ,,, i, with the i-th houses painted col
