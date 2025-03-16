@@ -3,14 +3,14 @@
 
 # 2b:
 
-def minCoins(t, denominations, OPT = {}):
+def minCoins(t, denominations, OPT = {}): # calculate minimum number of coins needed for each value of money given
     if OPT == {}:
         for i in denominations:
             OPT[i] = 1
     if t == 0:
         OPT[t] = 0
         return dict(sorted(OPT.items())) 
-    if t < 0:
+    if t < 0: # considering money should be positive
         OPT[t] = float('inf')
         return dict(sorted(OPT.items())) 
     if t in OPT:
@@ -27,7 +27,7 @@ def minCoins(t, denominations, OPT = {}):
 
 # 2c:
 
-def findMinCoins(t, denominations, OPT, denom = []):
+def findMinCoins(t, denominations, OPT, denom = []): # find which coins to actually use for minimum number of coins
     cur_denom = 0
     cur_min = float('inf')
     for i in denominations:
@@ -47,7 +47,8 @@ OPT = minCoins(40, [1, 4, 5, 10])
 print(OPT)
 print(findMinCoins(27, [1, 4, 5, 10], OPT))
 
-# 3
+# 3:
+# keep searching until theres either no more words in the string or theres a word thats not in the word bank
 
 def canBeSegmented(s, wordDict):
     i = 1
@@ -59,5 +60,7 @@ def canBeSegmented(s, wordDict):
         return True
     return canBeSegmented(s[i:], wordDict) 
     
-print(canBeSegmented('applepenapple', ['apple', 'pen']))
-print(canBeSegmented('catsandog',  ["cats", "dog", "sand", "and", "cat"]))
+print(canBeSegmented('applepenapple', ['apple', 'pen'])) # should be true because 
+print(canBeSegmented('catsandog',  ["cats", "dog", "sand", "and", "cat"])) # should be false because the and/sand 
+# will overlap with dog so it cant be directly separated into words in the word dict if word dict is restricted
+# to those five words only
