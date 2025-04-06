@@ -1,0 +1,24 @@
+angle between them versus magnitude
+magnitude can be a scale for the brightness
+angle is what matters - how similar they are
+dot product is used to compare similarity
+high dot product, high cosine similarity, low angle, similar
+conditions:
+- images are the same size (scale or crop em)
+- similar features should be aligned 
+(eg. comparing someone's eyes and someone's mouth doesnt give info)
+
+https://www.youtube.com/watch?v=aircAruvnKk&vl=en
+
+1 nearest neighbour algo
+take an input and compute cosine similarity for everything in the training set
+z1 is sum of the: x1 times weight between x1 and z1 + ... + xn times weight between xn and z1 
+to find output i think you also need to add the b value
+check slides + cross reference with the 3b1b vid
+monotonic transformation (sigma)
+for loop that computes the sum 
+figuring out weights and b's -> adjust them
+what's the role of b? weighting the accuracy???
+w is the weight of each edge where each xi is an edge
+z1 is high everything else is low if x is person 1
+etc. 
